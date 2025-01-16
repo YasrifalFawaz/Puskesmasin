@@ -28,7 +28,7 @@
                     <td>{{ $item->poli }}</td>
                     <td>{{ $item->keluhan }}</td>
                     <td>
-                        <a href="/pendaftaran/{{ $item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/pendaftaran/{{ $item->id}}" class="btn btn-info btn-sm">Detail</a>
                         <form action="/pendaftaran/{{ $item->id }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
