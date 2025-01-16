@@ -24,11 +24,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('poli', PoliController::class); 
 });
 
-Route::middleware(['auth', 'role:dokter'])->group(function () { 
-});
+// Route::middleware(['auth', 'role:dokter'])->group(function () { 
+// });
 
-Route::middleware(['auth', 'role:user'])->group(function () { 
-});
+// Route::middleware(['auth', 'role:user'])->group(function () { 
+// });
 
 Route::get('logout', function () {
     Auth::logout();
@@ -45,6 +45,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
-Route::get('/unauthorized', function () {
-    return 'Anda tidak memiliki akses ke halaman ini.';
-})->name('unauthorized');
+// Route::get('/', function () {
+//     return 'Anda tidak memiliki akses ke halaman ini.';
+// })->name('unauthorized');
