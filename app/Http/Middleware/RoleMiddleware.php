@@ -17,10 +17,10 @@ class RoleMiddleware
     public function handle($request, Closure $next, $role)
     {
         if (Auth::check() && in_array(Auth::user()->role, $roles)) {
-            return $next($request);
+            return redirect('/');
         }
 
         // Redirect jika user tidak memiliki akses
-        return redirect('/');
+        return $next($request);
     }
 }

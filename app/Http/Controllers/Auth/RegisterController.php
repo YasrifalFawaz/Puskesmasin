@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -69,5 +70,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
              'role' => 'user'
         ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        // Logout user immediately after registration
+        auth()->logout();
+
+        // Redirect user to the login page with a success message
+        return redirect('/login')->with('status', 'Registration successful. Please login.');
     }
 }

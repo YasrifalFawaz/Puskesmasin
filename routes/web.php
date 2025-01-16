@@ -45,6 +45,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
+// Single role
+Route::get('/admin', [AdminController::class, 'admin'])->middleware('role:admin');
+
+// Multiple roles
+Route::get('/admin', [DashboardController::class, 'admin'])->middleware('role:admin,dokter');
+
 // Route::get('/', function () {
 //     return 'Anda tidak memiliki akses ke halaman ini.';
 // })->name('unauthorized');
