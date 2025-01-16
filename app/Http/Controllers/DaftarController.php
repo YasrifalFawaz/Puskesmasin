@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Daftar;
 use App\Http\Requests\StoreDaftarRequest;
 use App\Http\Requests\UpdateDaftarRequest;
+use illuminate\Http\Request;
 
 class DaftarController extends Controller
 {
@@ -23,16 +24,25 @@ class DaftarController extends Controller
     public function create()
     {
         $data['listPasien'] = \App\Models\Pasien::orderBy('nama','asc')->get(); 
-        $data['listPoli'] =  \App\Models\Poli::orderBy('nama','asc')->get();
+        $data['listPoli'] =  \App\Models\Poli::orderBy('poli','asc')->get();
         return view('admin.pendaftaran.pendaftaran_create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDaftarRequest $request)
+    public function store(Request $request)
     {
-        //
+        $requestData = $request->validate([
+            'tanggal_daftar' => 'required',
+            'pasien_id' => 'required',
+            'poli' => 'required',
+            'keluhan' => 'required'
+        ]);
+        $daftar = new \App\Models\Daftar;
+        $daftar->fill($requestData);
+        $daftar->save();
+        return back()->with('pesan', 'Data berhasil disimpan');
     }
 
     /**

@@ -27,16 +27,16 @@
                 <span class="text-danger">{{ $errors->first('pasien_id') }}</span>
             </div>
             <div class="form-group mt-3">
-                <label for="poli_id">Pilih Poli Tujuan</label>
-                <select name="poli_id" class="form-control">
+                <label for="poli">Pilih Poli Tujuan</label>
+                <select name="poli" class="form-control">
                     <option value="">-- Pilih Poli --</option>
                     @foreach ($listPoli as $itemPoli)
-                        <option value="{{ $itemPoli->id }}" @selected(old('poli_id') == $itePoli->id)>
-                            {{ $itemPoli->nama }} - {{ $itemPoli->biaya }}
+                        <option value="{{ $itemPoli->id }}" @selected(old('poli') == $itemPoli->id)>
+                            {{ $itemPoli->poli }} - {{ $itemPoli->biaya }}
                         </option>
                     @endforeach
                 </select>
-                <span class="text-danger">{{ $errors->first('poli_id') }}</span>
+                <span class="text-danger">{{ $errors->first('poli') }}</span>
             </div>
             <div class="form-group mt-3 mb-3">
                 <label for="keluhan">Keluhan</label>           
