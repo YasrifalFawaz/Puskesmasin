@@ -5,7 +5,7 @@
 <div class="card">
     <h3 class="card-header">Data Pendaftaran</h3>
     <div class="card-body">
-        <a href="/daftar/create" class="btn btn-primary">Tambah Data </a>
+        <a href="/pendaftaran/create" class="btn btn-primary">Tambah Data </a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -28,8 +28,8 @@
                     <td>{{ $item->poli }}</td>
                     <td>{{ $item->keluhan }}</td>
                     <td>
-                        <a href="/admin/{{ $item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="/admin/{{ $item->id }}" method="POST" class="d-inline">
+                        <a href="/pendaftaran/{{ $item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="/pendaftaran/{{ $item->id }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin?')">

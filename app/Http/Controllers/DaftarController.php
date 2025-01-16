@@ -14,7 +14,7 @@ class DaftarController extends Controller
     public function index()
     {
         $data['daftar'] = \App\Models\Daftar::latest()->paginate(10); 
-        return view('pendaftaran.data_pendaftaran', $data);
+        return view('admin.pendaftaran.data_pendaftaran', $data);
     }
 
     /**
@@ -22,7 +22,9 @@ class DaftarController extends Controller
      */
     public function create()
     {
-        //
+        $data['listPasien'] = \App\Models\Pasien::orderBy('nama','asc')->get(); 
+        $data['listPoli'] =  \App\Models\Poli::orderBy('nama','asc')->get();
+        return view('admin.pendaftaran.pendaftaran_create', $data);
     }
 
     /**

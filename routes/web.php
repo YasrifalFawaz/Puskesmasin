@@ -4,6 +4,7 @@ use App\Http\Controllers\DaftarController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PoliController;
 use Illuminate\Auth\Middleware\Authenticate;
 
 /*
@@ -19,7 +20,8 @@ use Illuminate\Auth\Middleware\Authenticate;
 
 Route::middleware([Authenticate::class])->group(function () {
     Route::resource('admin', AdminController::class); 
-    Route::resource('daftar', DaftarController::class); 
+    Route::resource('pendaftaran', DaftarController::class); 
+    Route::resource('poli', PoliController::class); 
 });
 
 Route::get('logout', function () {

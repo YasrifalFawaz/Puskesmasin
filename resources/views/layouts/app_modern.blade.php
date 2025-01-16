@@ -7,6 +7,7 @@
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="/modern/src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="/modern/src/assets/css/styles.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -49,11 +50,19 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/daftar" aria-expanded="false">
+              <a class="sidebar-link" href="/pendaftaran" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
-                <span class="hide-menu">Pendaftaran Pasien</span>
+                <span class="hide-menu">Data Pendaftaran</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/poli" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user"></i>
+                </span>
+                <span class="hide-menu">Data Poli</span>
               </a>
             </li>
           </ul>
@@ -112,15 +121,27 @@
       </header>
       <!--  Header End -->
       <div class="container-fluid">
+        @if (session()->has('pesan'))
+        <div class="alert alert-info" role="alert">
+            {{ session('pesan') }}
+        </div>
+        @endif
         @yield('content')
       </div>
     </div>
   </div>
   <script src="/modern/src/assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="/modern/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/modern/src/assets/js/sidebarmenu.js"></script>
   <script src="/modern/src/assets/js/app.min.js"></script>
   <script src="/modern/src/assets/libs/simplebar/dist/simplebar.js"></script>
+  <script>
+        // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+  </script>
 </body>
 
 </html>
