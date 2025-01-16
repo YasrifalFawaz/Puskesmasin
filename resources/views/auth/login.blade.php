@@ -19,27 +19,39 @@
     }
 
     .wrapper {
-        max-width: 350px;
-        min-height: 500px;
-        margin: 80px auto;
-        padding: 40px 30px 30px 30px;
-        background-color: #ecf0f3;
-        border-radius: 15px;
-        box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
-    }
+    max-width: 350px;
+    min-height: 500px;
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memusatkan konten secara horizontal */
+    justify-content: center; /* Memusatkan konten secara vertikal */
+}
 
-    .logo {
-        width: 80px;
-        margin: auto;
-    }
+.logo {
+    display: flex;
+    justify-content: center; /* Memusatkan gambar di dalam wrapper logo */
+    margin-bottom: 20px;
+}
 
-    .logo img {
-        width: 100%;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 50%;
-        box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff;
-    }
+.logo img {
+    width: 90px; /* Memperbesar lebar gambar */
+    height: 80px; /* Memperbesar tinggi gambar */
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff;
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo img:hover {
+    transform: scale(1.3); /* Zoom lebih besar ketika hover */
+}
+
 
     .wrapper .name {
         font-weight: 600;
@@ -105,16 +117,16 @@
         <div class="col-md-6">
             <div class="wrapper">
                 <div class="logo">
-                    <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="Twitter Logo">
+                    <img src="/modern/src/assets/images/logos/kesmas.jpg" alt="Logo puskesmas">
                 </div>
                 <div class="text-center mt-4 name">
-                    Twitter
+                    PUSKESMASIN
                 </div>
                 <form method="POST" action="{{ route('login') }}" class="p-3 mt-3">
                     @csrf
                     <div class="form-field d-flex align-items-center">
                         <span class="far fa-user"></span>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Username" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="email" required autocomplete="email" autofocus>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
