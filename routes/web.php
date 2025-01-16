@@ -14,10 +14,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 // Rute untuk logout
-Route::post('logout', function () {
-    Auth::logout();
-    return redirect('login');
-})->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Halaman utama
 Route::get('/', function () {

@@ -34,10 +34,16 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function logout()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/login');
     }
 
     protected function authenticated(Request $request, $user)
