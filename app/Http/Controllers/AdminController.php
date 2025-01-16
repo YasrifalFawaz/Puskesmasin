@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function index()
     {
         $data['pasien'] = \App\Models\Pasien::latest()->paginate(10); 
-        return view('admin_index', $data);
+        return view('pasien.data_pasien', $data);
     }
 
     /**
@@ -20,7 +20,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('pasien_create');
+        return view('pasien.pasien_create');
     }
 
     /**
@@ -54,7 +54,7 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $data['pasien'] = \App\Models\Pasien::findOrFail($id);
-        return view('pasien_edit', $data);
+        return view('pasien.pasien_edit', $data);
     }
 
     /**

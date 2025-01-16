@@ -49,14 +49,6 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/admin/create" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user"></i>
-                </span>
-                <span class="hide-menu">Tambah Pasien</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
               <a class="sidebar-link" href="/daftar" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
