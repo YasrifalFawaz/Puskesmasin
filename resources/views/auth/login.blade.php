@@ -40,7 +40,7 @@
 
 .logo img {
     width: 90px; /* Memperbesar lebar gambar */
-    height: 80px; /* Memperbesar tinggi gambar */
+    height: 90px; /* Memperbesar tinggi gambar */
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff;
