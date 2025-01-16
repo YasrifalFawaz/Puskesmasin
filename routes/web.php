@@ -18,10 +18,16 @@ use Illuminate\Auth\Middleware\Authenticate;
 |
 */
 
-Route::middleware([Authenticate::class])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('admin', AdminController::class); 
     Route::resource('pendaftaran', DaftarController::class); 
     Route::resource('poli', PoliController::class); 
+});
+
+Route::middleware(['auth', 'role:dokter'])->group(function () { 
+});
+
+Route::middleware(['auth', 'role:user'])->group(function () { 
 });
 
 Route::get('logout', function () {
@@ -37,6 +43,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/unauthorized', function () {
+    return 'Anda tidak memiliki akses ke halaman ini.';
+})->name('unauthorized');
