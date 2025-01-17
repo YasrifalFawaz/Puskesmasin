@@ -21,7 +21,6 @@
                     <td>{{ $item->poli }}</td>
                     <td>{{ $item->biaya }}</td>
                     <td>{{ $item->keterangan }}</td>
-                    <td>{{ $item->created_at }}</td>
                     <td>
                         <a href="/poli/{{ $item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                         <form action="/poli/{{ $item->id }}" method="POST" class="d-inline">

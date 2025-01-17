@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('pasien_id');
             $table->foreign('pasien_id')->references('id')->on('pasiens');
             $table->date('tanggal_daftar');
-            $table->string('poli');
+            $table->unsignedBigInteger('poli');
+            $table->foreign('poli')->references('id')->on('polis');
             $table->text('keluhan');
             $table->text('diagnosis')->nullable();
             $table->text('tindakan')->nullable();

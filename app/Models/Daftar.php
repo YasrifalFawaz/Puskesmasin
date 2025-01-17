@@ -12,12 +12,22 @@ class Daftar extends Model
     protected $guarded = [];
 
     /**
-     * Get the pasien that owns the Daftar
+     * Get the Pasien that owns the Daftar
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function Pasien(): BelongsTo
     {
-        return $this->belongsTo(Pasien::class);
+        return $this->belongsTo(Pasien::class, 'pasien_id', 'id');
+    }
+
+    /**
+     * Get the user that owns the Daftar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Poli(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'poli', 'id');
     }
 }

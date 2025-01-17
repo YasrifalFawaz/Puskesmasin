@@ -25,7 +25,7 @@
                     <td>{{ $item->pasien->nama }}</td>
                     <td>{{ $item->pasien->jenis_kelamin }}</td>
                     <td>{{ $item->tanggal_daftar }}</td>
-                    <td>{{ $item->poli }}</td>
+                    <td>{{ $item->poli->poli }}</td>
                     <td>{{ $item->keluhan }}</td>
                     <td>
                         <a href="/pendaftaran/{{ $item->id}}" class="btn btn-info btn-sm">Detail</a>

@@ -9,4 +9,14 @@ class Poli extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    /**
+     * Get all of the Daftar for the Poli
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function Daftar(): HasMany
+    {
+        return $this->hasMany(Daftar::class, 'poli', 'id');
+    }
 }
