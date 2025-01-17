@@ -9,13 +9,13 @@
             @method('put')
             @csrf
             <div class="form-group mt-1 mb-3">
-                <label for="poli">Nama Poli</label>
+                <label for="poli_id">Nama Poli</label>
                 <input type="text" 
-                       class="form-control @error('poli') is-invalid @enderror"
-                       id="poli" 
-                       name="poli" 
-                       value="{{ old('poli') ?? $poli->poli }}">
-                <span class="text-danger">{{ $errors->first('poli') }}</span>
+                       class="form-control @error('poli_id') is-invalid @enderror"
+                       id="poli_id" 
+                       name="poli_id" 
+                       value="{{ old('poli_id') ?? $poli->nama_poli }}">
+                <span class="text-danger">{{ $errors->first('poli_id') }}</span>
             </div>
             <!-- biaya -->
             <div class="form-group mt-1 mb-3">

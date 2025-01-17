@@ -14,8 +14,8 @@ class RiwayatController extends Controller
      */
     public function index()
     {
-        $data['daftar'] = \App\Models\Daftar::latest()->paginate(10);
-        return view('pasien.riwayat.data_riwayat', $data);
+        $daftar = Daftar::where('user_id', auth()->id())->with('poli')->paginate(10);
+        return view('pasien.riwayat.data_riwayat', compact('daftar'));
     }
 
     /**

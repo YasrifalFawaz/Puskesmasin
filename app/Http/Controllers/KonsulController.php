@@ -7,6 +7,7 @@ use App\Models\Daftar;
 use App\Http\Requests\StoreDaftarRequest;
 use App\Http\Requests\UpdateDaftarRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class KonsulController extends Controller
@@ -16,8 +17,8 @@ class KonsulController extends Controller
      */
     public function index()
     {
-        $data['daftar'] = \App\Models\Daftar::latest()->paginate(10);
-        return view('pasien.konsultasi.data_konsultasi', $data);
+        $daftar = Daftar::where('user_id', Auth::id())->with('user', 'poli')->latest()->paginate(10);
+        return view('pasien.konsultasi.data_konsultasi', compact('daftar'));
     }
 
     /**
@@ -25,8 +26,8 @@ class KonsulController extends Controller
      */
     public function create()
     {
-        $data['listPasien'] = \App\Models\Pasien::orderBy('nama','asc')->get(); 
-        $data['listPoli'] =  \App\Models\Poli::orderBy('poli','asc')->get();
+        $data['listDokter'] = \App\Models\Dokter::orderBy('nama', 'asc')->get();
+        $data['listPoli'] =  \App\Models\Poli::orderBy('nama_poli','asc')->get();
         return view('pasien.konsultasi.konsultasi_create', $data);
         
     }
@@ -37,14 +38,17 @@ class KonsulController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->validate([
-            'tanggal_daftar' => 'required',
-            'pasien_id' => 'required',
-            'poli' => 'required',
-            'keluhan' => 'required'
+            'poli_id' => 'required',
+            'dokter_id' => 'required',
+            'keluhan' => 'required',
+            'jadwal_pertemuan' => 'required'
         ]);
-        $daftar = new \App\Models\Daftar;
+        $requestData['tanggal_daftar'] = now()->format('Y-m-d');
+        $requestData['user_id'] = auth()->id();
+        $daftar = new Daftar;
         $daftar->fill($requestData);
         $daftar->save();
+
         return back()->with('pesan', 'Data berhasil disimpan');
     }
 

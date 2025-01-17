@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    DATA PENDAFTARAN {{ strtoupper($daftar->pasien->nama) }}
+                    DATA PENDAFTARAN {{ strtoupper($daftar->user->name) }}
                 </div>
                 <div class="card-body">
 
@@ -15,11 +15,7 @@
                         <tbody>
                             <tr>
                                 <th>Nama Pasien</th>
-                                <td>: {{ $daftar->pasien->nama }}</td>
-                            </tr>
-                            <tr>
-                                <th>Jenis Kelamin</th>
-                                <td>: {{ $daftar->pasien->jenis_kelamin }}</td>
+                                <td>: {{ $daftar->user->name }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -38,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($daftar->pasien->daftar as $item)
+                            @foreach ($daftar as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->tanggal_daftar }}</td>
