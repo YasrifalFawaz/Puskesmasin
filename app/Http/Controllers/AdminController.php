@@ -10,12 +10,12 @@ class AdminController extends Controller
     public function index()
     {
         $data['pasien'] = Pasien::latest()->paginate(10);
-        return view('pasien.data_pasien', $data);
+        return view('admin.pasien.data_pasien', $data);
     }
 
     public function create()
     {
-        return view('pasien.pasien_create');
+        return view('admin.pasien.pasien_create');
     }
 
     public function store(Request $request)
@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $data['pasien'] = Pasien::findOrFail($id);
-        return view('pasien.pasien_edit', $data);
+        return view('admin.pasien.pasien_edit', $data);
     }
 
     public function update(Request $request, string $id)

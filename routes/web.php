@@ -2,6 +2,9 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\PoliController;
+use App\Http\Controllers\PasienController;
+use App\Http\Controllers\KonsulController;
+use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +14,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('pendaftaran', DaftarController::class);
     Route::resource('poli', PoliController::class);
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::resource('user', PasienController::class);
+    Route::resource('konsultasi', KonsulController::class);
+    Route::resource('riwayat', RiwayatController::class);
 });
 
 // Rute untuk logout
