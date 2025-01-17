@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Daftar;
+use App\Models\User;
 use App\Http\Requests\StoreDaftarRequest;
 use App\Http\Requests\UpdateDaftarRequest;
 use Illuminate\Http\Request;
@@ -23,8 +24,11 @@ class DaftarController extends Controller
      */
     public function create()
     {
-        $data['listPasien'] = \App\Models\Pasien::orderBy('nama','asc')->get(); 
-        $data['listPoli'] =  \App\Models\Poli::orderBy('poli','asc')->get();
+        $data['listPasien'] = User::where('role', '=', 'user')->get();
+        $data['listDokter'] = \App\Models\Dokter::orderBy('nama','asc')->get(); 
+        $data['listPoli'] =  \App\Models\Poli::orderBy('nama_poli','asc')->get();
+
+        // dd($data['listPasien']);
         return view('admin.pendaftaran.pendaftaran_create', $data);
     }
 
@@ -34,14 +38,18 @@ class DaftarController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->validate([
-            'tanggal_daftar' => 'required',
-            'pasien_id' => 'required',
-            'poli' => 'required',
+            'user_id' => 'nullable',
+            'poli_id' => 'required',
+            'dokter_id' => 'required',
+            'jadwal_pertemuan' => 'required',
             'keluhan' => 'required'
         ]);
-        $daftar = new \App\Models\Daftar;
+        $requestData['tanggal_daftar'] = now()->format('Y-m-d');
+        $requestData['user_id'] = auth()->id();
+        $daftar = new Daftar;
         $daftar->fill($requestData);
         $daftar->save();
+
         return back()->with('pesan', 'Data berhasil disimpan');
     }
 
@@ -50,7 +58,7 @@ class DaftarController extends Controller
      */
     public function show($id)
     {
-        $daftar = Daftar::with('pasien.daftar')->findOrFail($id);
+        $daftar = Daftar::with('user')->findOrFail($id);
         return view('admin.pendaftaran.pendaftaran_show', compact('daftar'));
     }
 
