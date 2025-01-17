@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\App\Http\Controllers\DaftarController;
 use App\Models\Daftar;
+use Carbon\Carbon;
 
 
 class RiwayatController extends Controller
@@ -14,7 +15,11 @@ class RiwayatController extends Controller
      */
     public function index()
     {
-        $daftar = Daftar::where('user_id', auth()->id())->with('poli')->paginate(10);
+        $today = Carbon::today(); // Mendapatkan tanggal hari ini
+        $daftar = Daftar::where('jadwal_pertemuan', '<', $today)
+        ->where('user_id', auth()->id()) // Hanya data milik user yang login
+        ->with('poli') // Pastikan relasi poli di-load
+        ->paginate(10);
         return view('pasien.riwayat.data_riwayat', compact('daftar'));
     }
 

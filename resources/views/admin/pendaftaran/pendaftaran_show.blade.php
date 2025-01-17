@@ -26,7 +26,6 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>NO</th>
                                 <th>Tanggal Daftar</th>
                                 <th>Keluhan</th>
                                 <th>Diagnosis</th>
@@ -34,15 +33,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($daftar as $item)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->tanggal_daftar }}</td>
-                                <td>{{ $item->keluhan }}</td>
-                                <td>{{ $item->diagnosis }}</td>
-                                <td>{{ $item->tindakan }}</td>
+                                <td>{{ $daftar->tanggal_daftar }}</td>
+                                <td>{{ $daftar->keluhan }}</td>
+                                <td>{{ $daftar->diagnosis }}</td>
+                                <td>{{ $daftar->tindakan }}</td>
                             </tr>
-                            @endforeach
                         </tbody>
                     </table>
 
@@ -61,15 +57,11 @@
                             </tr>
                             <tr>
                                 <th>Poli</th>
-                                <td>: {{ $daftar->poli }}</td>
+                                <td>: {{ $daftar->poli->nama_poli }}</td>
                             </tr>
                             <tr>
                                 <th>Keluhan</th>
                                 <td>: {{ $daftar->keluhan }}</td>
-                            </tr>
-                            <tr>
-                                <th>Status Pendaftaran</th>
-                                <td>: {{ $daftar->status_daftar }}</td>
                             </tr>
                         </tbody>
                     </table>
