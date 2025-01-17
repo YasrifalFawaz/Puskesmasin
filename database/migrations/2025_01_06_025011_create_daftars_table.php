@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('daftars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pasien_id');
-            $table->foreign('pasien_id')->references('id')->on('pasiens');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('tanggal_daftar');
-            $table->unsignedBigInteger('poli');
-            $table->foreign('poli')->references('id')->on('polis');
+            $table->unsignedBigInteger('poli_id');
+            $table->foreign('poli_id')->references('id')->on('polis');
+            $table->unsignedBigInteger('dokter_id');
+            $table->foreign('dokter_id')->references('id')->on('dokters');
             $table->text('keluhan');
             $table->text('diagnosis')->nullable();
             $table->text('tindakan')->nullable();
+            $table->date('jadwal_pertemuan');
             $table->timestamps();
         });
     }

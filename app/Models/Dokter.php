@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Poli extends Model
+class Dokter extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
     /**
-     * Get all of the Daftar for the Poli
+     * Get all of the Daftar for the Dokter
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function Daftar(): HasMany
     {
-        return $this->hasMany(Daftar::class, 'poli_id', 'id');
+        return $this->hasMany(Daftar::class, 'dokter_id', 'id');
     }
 }

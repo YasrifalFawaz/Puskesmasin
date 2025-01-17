@@ -18,7 +18,7 @@
                 @foreach ($poli as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->poli }}</td>
+                    <td>{{ $item->nama_poli  }}</td>
                     <td>{{ $item->biaya }}</td>
                     <td>{{ $item->keterangan }}</td>
                     <td>

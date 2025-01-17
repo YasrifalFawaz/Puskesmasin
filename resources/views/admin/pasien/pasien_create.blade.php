@@ -8,13 +8,13 @@
         <form action="/admin" method="POST">
             @csrf
             <div class="form-group mt-1 mb-3">
-                <label for="nama">Nama Pasien</label>
+                <label for="name">Nama Pasien</label>
                 <input type="text" 
-                       class="form-control @error('nama') is-invalid @enderror"
-                       id="nama" 
-                       name="nama" 
-                       value="{{ old('nama') }}">
-                <span class="text-danger">{{ $errors->first('nama') }}</span>
+                       class="form-control @error('name') is-invalid @enderror"
+                       id="name" 
+                       name="name" 
+                       value="{{ old('name') }}">
+                <span class="text-danger">{{ $errors->first('name') }}</span>
             </div>
             <!-- Umur -->
             <div class="form-group mt-1 mb-3">
@@ -49,7 +49,6 @@
                 </div>
                 <span class="text-danger">{{ $errors->first('jenis_kelamin') }}</span>
             </div>
-
             <!-- Alamat -->
             <div class="form-group mt-1 mb-3">
                 <label for="alamat">Alamat</label>
@@ -59,7 +58,27 @@
                        name="alamat" 
                        value="{{ old('alamat') }}">
                 <span class="text-danger">{{ $errors->first('alamat') }}</span>
-            </div> 
+            </div>
+            <!-- Email -->
+            <div class="form-group mt-1 mb-3">
+                <label for="email">E-mail</label>
+                <input type="email" 
+                       class="form-control @error('email') is-invalid @enderror"
+                       id="email" 
+                       name="email" 
+                       value="{{ old('email') }}">
+                <span class="text-danger">{{ $errors->first('email') }}</span>
+            </div>
+            <!-- Password -->
+            <div class="form-group mt-1 mb-3">
+                <label for="password">Password</label>
+                <input type="password" 
+                       class="form-control @error('password') is-invalid @enderror"
+                       id="password" 
+                       name="password" 
+                       value="{{ old('password') }}">
+                <span class="text-danger">{{ $errors->first('password') }}</span>
+            </div>
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">SIMPAN</button>
         </form>

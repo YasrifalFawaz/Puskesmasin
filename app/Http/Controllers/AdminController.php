@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pasien;
+use App\Models\User;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $data['pasien'] = Pasien::latest()->paginate(10);
-        return view('admin.pasien.data_pasien', $data);
+        $data['daftar'] = \App\Models\Daftar::whereHas('pasien', function ($query) {
+            $query->where('role', 'user');
+        })->latest()->paginate(10);
+
+        return view('admin.pendaftaran.data_pendaftaran', $data);
     }
 
     public function create()
@@ -21,43 +24,37 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->validate([
-            'nama' => 'required',
-            'umur' => 'required|integer',
-            'jenis_kelamin' => 'required|in:L,P',
-            'alamat' => 'nullable|string'
-        ], [
-            'nama.required' => 'Nama wajib diisi.',
-            'umur.required' => 'Umur wajib diisi.',
-            'jenis_kelamin.required' => 'Jenis kelamin wajib diisi.',
-            'jenis_kelamin.in' => 'Jenis kelamin hanya boleh L atau P.'
+            'name' => 'required',
+            'umur' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'nullable',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
-        try {
-            $pasien = new Pasien;
-            $pasien->fill($requestData);
-            $pasien->save();
-            return back()->with('pesan', 'Data berhasil disimpan');
-        } catch (\Exception $e) {
-            return back()->with('pesan', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
+        $pasien = new User;
+        $pasien->fill($requestData);
+        $pasien->save();
+        return back()->with('pesan', 'Data berhasil disimpan');
     }
 
     public function edit(string $id)
     {
-        $data['pasien'] = Pasien::findOrFail($id);
-        return view('admin.pasien.pasien_edit', $data);
+        $pasien = User::findOrFail($id);
+        return view('admin.pasien.pasien_edit', compact('pasien'));
+        return back()->with('pesan', 'Data berhasil disimpan');
     }
 
     public function update(Request $request, string $id)
     {
         $requestData = $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'umur' => 'required|integer',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required',
             'alamat' => 'nullable|string'
         ]);
 
-        $pasien = Pasien::findOrFail($id);
+        $pasien = User::findOrFail($id);
         $pasien->fill($requestData);
         $pasien->save();
 
@@ -66,7 +63,7 @@ class AdminController extends Controller
 
     public function destroy(string $id)
     {
-        $pasien = Pasien::findOrFail($id);
+        $pasien = User::findOrFail($id);
 
         if ($pasien->daftar->count() >= 1) {
             return back()->with('pesan', 'Oops.. Data tidak bisa dihapus, karena terkait dengan data pendaftaran');

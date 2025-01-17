@@ -11,13 +11,4 @@ class Pasien extends Model
     use HasFactory;
     protected $guarded = [];
 
-    /**
-     * Get all of the daftar for the Pasien
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function daftar(): HasMany
-    {
-        return $this->hasMany(Daftar::class);
-    }
 }

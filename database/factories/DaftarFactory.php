@@ -16,15 +16,18 @@ class DaftarFactory extends Factory
      */
     public function definition(): array
     {
-        $idPasien = \App\Models\Pasien::pluck('id')->toArray();
+        $idUser = \App\Models\User::pluck('id')->toArray();
         $idPoli = \App\Models\Poli::pluck('id')->toArray();
+        $idDokter = \App\Models\Dokter::pluck('id')->toArray();
         return [
-            'pasien_id' => $this->faker->randomElement($idPasien),
+            'user_id' => $this->faker->randomElement($idUser),
             'tanggal_daftar' => $this->faker->date(),
-            'poli' => $this->faker->randomElement($idPoli),
+            'poli_id' => $this->faker->randomElement($idPoli),
+            'dokter_id' => $this->faker->randomElement($idDokter),
             'keluhan' => $this->faker->sentence(),
             'diagnosis' => $this->faker->sentence(),
             'tindakan' => $this->faker->sentence(),
+            'jadwal_pertemuan' => $this->faker->date(),
         ];
     }
 }

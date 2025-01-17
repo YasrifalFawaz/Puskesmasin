@@ -6,16 +6,16 @@
     <h5 class="card-header">Edit Data Pasien <b>{{ $pasien->nama }}</b></h5>
     <div class="card-body">
         <form action="/admin/{{ $pasien->id }}" method="POST" enctype="multipart/form-data">
-            @method('put')
+            @method('PUT')
             @csrf
             <div class="form-group mt-1 mb-3">
-                <label for="nama">Nama Pasien</label>
+                <label for="name">Nama Pasien</label>
                 <input type="text" 
-                       class="form-control @error('nama') is-invalid @enderror"
-                       id="nama" 
-                       name="nama" 
-                       value="{{ old('nama') ?? $pasien->nama }}">
-                <span class="text-danger">{{ $errors->first('nama') }}</span>
+                       class="form-control @error('name') is-invalid @enderror"
+                       id="name" 
+                       name="name" 
+                       value="{{ old('name') ?? $pasien->name }}">
+                <span class="text-danger">{{ $errors->first('name') }}</span>
             </div>
             <!-- Umur -->
             <div class="form-group mt-1 mb-3">

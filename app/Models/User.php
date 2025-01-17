@@ -13,12 +13,25 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
+     * Get all of the Daftar for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function Daftar(): HasMany
+    {
+        return $this->hasMany(Daftar::class, 'user_id', 'id');
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'name',
+        'umur',
+        'jenis_kelamin',
+        'alamat',
         'email',
         'password',
         'role'

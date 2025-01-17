@@ -11,10 +11,10 @@
                 <tr>
                     <th>NO</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tanggal Daftar</th>
                     <th>Poli</th>
-                    <th>Keluhan</th>
+                    <th>Dokter</th>
+                    <th>Tanggal Daftar</th>
+                    <th>Tanggal Konsultasi</th>
                     <th>AKSI</th>
                 </tr>
             </thead>
@@ -22,11 +22,11 @@
                 @foreach ($daftar as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->pasien->nama }}</td>
-                    <td>{{ $item->pasien->jenis_kelamin }}</td>
+                    <td>{{ $item->user->name }}</td>
+                    <td>{{ $item->poli->nama_poli }}</td>
+                    <td>{{ $item->dokter->nama }}</td>
                     <td>{{ $item->tanggal_daftar }}</td>
-                    <td>{{ $item->poli->poli }}</td>
-                    <td>{{ $item->keluhan }}</td>
+                    <td>{{ $item->jadwal_pertemuan }}</td>
                     <td>
                         <a href="/pendaftaran/{{ $item->id}}" class="btn btn-info btn-sm">Detail</a>
                         <form action="/pendaftaran/{{ $item->id }}" method="POST" class="d-inline">

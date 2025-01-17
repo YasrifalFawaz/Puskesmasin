@@ -21,6 +21,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::resource('riwayat', RiwayatController::class);
 });
 
+
+
 // Rute untuk logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 

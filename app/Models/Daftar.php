@@ -12,13 +12,13 @@ class Daftar extends Model
     protected $guarded = [];
 
     /**
-     * Get the Pasien that owns the Daftar
+     * Get the User that owns the Daftar
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Pasien(): BelongsTo
+    public function User(): BelongsTo
     {
-        return $this->belongsTo(Pasien::class, 'pasien_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     /**
@@ -28,6 +28,16 @@ class Daftar extends Model
      */
     public function Poli(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'poli', 'id');
+        return $this->belongsTo(Poli::class, 'poli_id', 'id');
+    }
+
+    /**
+     * Get the Dokter that owns the Daftar
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function Dokter(): BelongsTo
+    {
+        return $this->belongsTo(DOkter::class, 'dokter_id', 'id');
     }
 }
