@@ -62,7 +62,7 @@ class PoliController extends Controller
     public function update(Request $request, string $id)
     {
         $requestData = $request->validate([
-        'poli' => 'required',
+        'nama_poli' => 'required',
         'biaya' => 'required|numeric',
         'keterangan' => 'required',
     ]);
