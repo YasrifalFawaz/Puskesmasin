@@ -9,11 +9,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $data['daftar'] = \App\Models\Daftar::whereHas('pasien', function ($query) {
-            $query->where('role', 'user');
-        })->latest()->paginate(10);
-
-        return view('admin.pendaftaran.data_pendaftaran', $data);
+        $pasien = User::where('role', 'user')->paginate(10);
+        return view('admin.pasien.data_pasien', compact('pasien'));
     }
 
     public function create()
