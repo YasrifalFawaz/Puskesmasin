@@ -18,14 +18,6 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="/modern/src/assets/images/logos/dark-logo.svg" width="180" alt="" />
-          </a>
-          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-          </div>
-        </div>
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
@@ -46,7 +38,7 @@
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
-                <span class="hide-menu">Lihat Jadwal Konsultasi</span>
+                <span class="hide-menu">Konsultasi</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -55,14 +47,6 @@
                   <i class="ti ti-user"></i>
                 </span>
                 <span class="hide-menu">Riwayat Konsultasi</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="/poli" aria-expanded="false">
-                <span>
-                  <i class="ti ti-user"></i>
-                </span>
-                <span class="hide-menu">Data Poli</span>
               </a>
             </li>
           </ul>

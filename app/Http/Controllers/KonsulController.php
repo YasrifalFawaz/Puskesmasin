@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\App\Http\Controllers\DaftarController;
+use App\Http\Controllers\DaftarController;
 use App\Models\Daftar;
+use App\Http\Requests\StoreDaftarRequest;
+use App\Http\Requests\UpdateDaftarRequest;
+use Illuminate\Http\Request;
 
 
 class KonsulController extends Controller
@@ -23,7 +25,10 @@ class KonsulController extends Controller
      */
     public function create()
     {
-        //
+        $data['listPasien'] = \App\Models\Pasien::orderBy('nama','asc')->get(); 
+        $data['listPoli'] =  \App\Models\Poli::orderBy('poli','asc')->get();
+        return view('pasien.konsultasi.konsultasi_create', $data);
+        
     }
 
     /**
@@ -31,7 +36,16 @@ class KonsulController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->validate([
+            'tanggal_daftar' => 'required',
+            'pasien_id' => 'required',
+            'poli' => 'required',
+            'keluhan' => 'required'
+        ]);
+        $daftar = new \App\Models\Daftar;
+        $daftar->fill($requestData);
+        $daftar->save();
+        return back()->with('pesan', 'Data berhasil disimpan');
     }
 
     /**

@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="card">
-    <h3 class="card-header">Data Pendaftaran</h3>
+    <h3 class="card-header">Konsultasi</h3>
     <div class="card-body">
-        <a href="/pendaftaran/create" class="btn btn-primary">Tambah Data </a>
+        <a href="/konsultasi/create" class="btn btn-primary">Tambah Data </a>
         <table class="table table-striped">
             <thead>
                 <tr>

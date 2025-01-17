@@ -13,7 +13,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('admin', AdminController::class);
     Route::resource('pendaftaran', DaftarController::class);
     Route::resource('poli', PoliController::class);
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
 Route::middleware(['auth', 'role:user'])->group(function () {
